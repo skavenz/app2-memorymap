@@ -1,0 +1,8 @@
+{
+  "name": "app2-memorymap",
+  "plan": {
+    "projectName": "app2-memorymap",
+    "description": "This is a world map where users can pinpoint a place they visited. The place can be a 1 word vibe associated with it such as \"calm\" and have a comment and picture, similar to an instagram when they hover over a pin."
+  },
+  "template": "react"
+}
