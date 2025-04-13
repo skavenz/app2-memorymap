@@ -19,8 +19,19 @@ const PinMarker: React.FC<PinMarkerProps> = ({ pin, style }) => {
       }}
     >
       <h3>{pin.title}</h3>
-      <span className="vibe-tag">{pin.vibe}</span>
-      <p>{pin.description}</p>
+      <div className="vibe-tag">
+        <span>{VIBES[pin.vibe].emoji}</span>
+      </div>
+      {pin.image && (
+        <div className="mt-2">
+          <img 
+            src={pin.image} 
+            alt="Memory" 
+            className="w-full h-32 object-cover rounded"
+          />
+        </div>
+      )}
+      <p className="mt-2">{pin.description}</p>
       {pin.images && pin.images.length > 0 && (
         <div className="images-preview">
           {pin.images.slice(0, 3).map((img, i) => (

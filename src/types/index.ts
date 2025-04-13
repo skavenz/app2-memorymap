@@ -4,7 +4,7 @@ export interface Pin {
   id: string;
   title: string;
   description: string;
-  coordinates: [number, number]; // [longitude, latitude]
+  coordinates: [number, number]; // [latitude, longitude] - Changed comment to match reality
   vibe: VibeType;
   images?: string[];
 }
