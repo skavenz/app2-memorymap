@@ -11,11 +11,15 @@ const App: React.FC = () => {
     title: '',
     description: '',
     vibe: undefined,
-    image: undefined
+    image: undefined,
+    author: '', // Add author field
   });
 
   const handleSavePin = () => {
-    if (!tempCoords || !editingPin.vibe || !editingPin.description) return;
+    if (!tempCoords || !editingPin.vibe || !editingPin.description || !editingPin.author) return;
+
+    const today = new Date();
+    const formattedDate = today.toLocaleDateString('en-GB'); // DD/MM/YYYY format
 
     setPins([
       ...pins,
@@ -25,7 +29,9 @@ const App: React.FC = () => {
         title: editingPin.title || '',
         description: editingPin.description,
         vibe: editingPin.vibe,
-        image: editingPin.image
+        image: editingPin.image,
+        author: editingPin.author,
+        createdAt: formattedDate
       }
     ]);
 
@@ -67,6 +73,18 @@ const App: React.FC = () => {
       {isAddingPin && tempCoords && (
         <div className="absolute top-4 right-4 bg-white p-4 rounded-xl shadow-xl min-w-[300px] z-[999]">
           <h3 className="text-lg font-bold mb-3">Add a Memory</h3>
+          
+          <div className="mb-3">
+            <input
+              type="text"
+              placeholder="Your name"
+              className="w-full px-3 py-2 border rounded"
+              value={editingPin.author || ''}
+              onChange={(e) => setEditingPin({ ...editingPin, author: e.target.value })}
+              required
+            />
+          </div>
+
           <div className="mb-3">
             <select
               className="w-full px-3 py-2 border rounded"

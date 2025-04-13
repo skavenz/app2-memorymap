@@ -5,5 +5,7 @@ export interface Pin {
   coordinates: [number, number];
   description: string;
   vibe: keyof typeof VIBES;
-  image?: string;  // Add this line
+  image?: string;
+  author: string;  // Add author field
+  createdAt: string;  // Add date field
 }

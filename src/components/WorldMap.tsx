@@ -60,12 +60,33 @@ export const WorldMap: React.FC<WorldMapProps> = ({
         )}
 
         {pins.map((pin) => (
-          <Marker key={pin.id} position={pin.coordinates}>
-            <Popup>
-              <div className="p-2 max-w-[200px]">
-                <h3 className="font-bold text-md">{pin.title}</h3>
+          <Marker 
+            key={pin.id} 
+            position={pin.coordinates}
+            eventHandlers={{
+              mouseover: (e) => e.target.openPopup()
+            }}
+          >
+            <Popup maxWidth={500} className="instagram-popup">
+              <div className="p-4 w-[450px]">
+                {pin.image && (
+                  <div className="aspect-square w-full overflow-hidden rounded-lg mb-4">
+                    <img 
+                      src={pin.image} 
+                      alt="Memory" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="font-semibold">{pin.author}</div>
+                  <div className="text-xs text-gray-500">•</div>
+                  <div className="text-xs text-gray-500">{pin.createdAt}</div>
+                </div>
+                <h3 className="font-bold text-lg mb-2">{pin.title}</h3>
                 <p className="text-sm">
-                  {VIBES[pin.vibe].emoji} {pin.description}
+                  <span className="mr-2">{VIBES[pin.vibe].emoji}</span>
+                  {pin.description}
                 </p>
               </div>
             </Popup>
