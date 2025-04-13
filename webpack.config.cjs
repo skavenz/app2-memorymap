@@ -19,13 +19,31 @@ module.exports = (env, argv) => {
           use: {
             loader: 'ts-loader',
             options: {
-              transpileOnly: true
+              transpileOnly: true,
+              compilerOptions: {
+                jsx: 'react'
+              }
             }
           }
         },
         {
           test: /\.css$/,
-          use: ['style-loader', 'css-loader', 'postcss-loader']
+          use: [
+            'style-loader',
+            'css-loader',
+            {
+              loader: 'postcss-loader',
+              options: {
+                postcssOptions: {
+                  plugins: [require('tailwindcss'), require('autoprefixer')],
+                },
+              },
+            },
+          ],
+        },
+        {
+          test: /\.(png|svg|jpg|jpeg|gif)$/i,
+          type: 'asset/resource'
         }
       ]
     },

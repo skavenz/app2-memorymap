@@ -2,7 +2,7 @@
   "name": "app2-memorymap",
   "plan": {
     "projectName": "app2-memorymap",
-    "description": "This is a world map where users can pinpoint a place they visited. The place can be a 1 word vibe associated with it such as \"calm\" and have a comment and picture, similar to an instagram when they hover over a pin."
+    "description": "This is a world map where users can pinpoint a place they visited. There will be a view mode and an edit mode. The place can be a 1 word vibe associated with it such as \"calm\" and have a comment and picture, similar to an instagram when they hover over a pin. These visiblity of pins will be surrounded on groups, so users can select the group as well on the side of the screen of the pins they want to see, or select all."
   },
   "template": "react"
 }
